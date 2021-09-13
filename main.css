@@ -1,11 +1,11 @@
 :root{
 
     --primary: #FFE2BD;
-    --icon-size: 80px;
+    --icon-size: 60px;
 
 }
 
-*{box-sizing: border-box;margin: 0;padding: 0;}a{text-decoration: none;} ul li{list-style-type: none;}
+*{box-sizing: border-box;margin: 0;padding: 0;} a{text-decoration: none;} ul li{list-style-type: none;}
 
 body {
     color: var(--primary);
@@ -15,6 +15,14 @@ body {
     justify-content: center;
     width: 100vw;
     padding: 100px;
+}
+
+nav#share-nav a{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 nav svg{
@@ -34,6 +42,20 @@ nav ul {
 nav ul li{
     transform: translateY(50%);
     opacity: 0;
+}
+
+nav .line{
+    content: '';
+    width: 1px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary);
+    margin: 10px 0;
+    transition: all 0.3 ease-in-out;
+}
+
+nav .line.line-hide{
+    height: 0;
 }
 
 nav a{

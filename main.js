@@ -1,4 +1,4 @@
-function animateIcons() {
+function animateShareMenu() {
 
     const container = $('#share-nav');
     let inProgress = false;
@@ -9,13 +9,17 @@ function animateIcons() {
             container.find('.share svg').addClass('active');
             gsap.set('#share-nav ul', {
                 display: 'flex', onComplete: () => {
-                    gsap.to('#share-nav ul li', {
+                    const tl = gsap.timeline();
+                    tl.to('#share-nav .share .line-hide', {
+                        duration: .4,
+                        height: '20px'
+                    }).to('#share-nav ul li', {
                         duration: .5,
                         y: '0%',
                         stagger: 0.1,
                         opacity: 1,
                         ease: 'Expo.easeInOut'
-                    });
+                    }, '-=.4');
                 }, onUpdate: () => {
                     inProgress = true;
                 }
@@ -24,7 +28,8 @@ function animateIcons() {
     });
 
     container.on('mouseleave', () => {
-        gsap.to('#share-nav ul li', {
+        const tl = gsap.timeline();
+        tl.to('#share-nav ul li', {
             duration: .5,
             y: '50%',
             stagger: -0.1,
@@ -37,8 +42,11 @@ function animateIcons() {
                 gsap.set('#share-nav ul', { display: 'none' });
                 inProgress = false;
             }
-        });
+        }).to('#share-nav .share .line-hide', {
+            duration: .4,
+            height: '0px'
+        }, '-=.5');
     });
 
 }
-animateIcons()
+animateShareMenu()
